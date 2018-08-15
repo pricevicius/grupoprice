@@ -3,7 +3,7 @@ import { genSaltSync, hashSync, compareSync } from 'bcryptjs';
 import { ModelsInterface } from '../interfaces/ModelsInterface';
 import { BaseModelInterface } from '../interfaces/BaseModelInterface';
 
-export interface AdminPagesAttributes {
+export interface AdminPropertiesAttributes {
     id?: string;
     title?: string;
     subtitle?: string;
@@ -13,21 +13,25 @@ export interface AdminPagesAttributes {
     updatedAt?: string;
 }
 
-export interface AdminPagesInstance extends Sequelize.Instance<AdminPagesAttributes>, AdminPagesAttributes {
+export interface AdminPropertiesInstance extends Sequelize.Instance<AdminPropertiesAttributes>, AdminPropertiesAttributes {
     isPassword(encodedPassword: string, password: string): boolean;
 }
 
-export interface AdminPagesModel extends Sequelize.Model<AdminPagesInstance, AdminPagesAttributes>, BaseModelInterface {}
+export interface AdminPropertiesModel extends Sequelize.Model<AdminPropertiesInstance, AdminPropertiesAttributes>, BaseModelInterface {}
 
-export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): AdminPagesModel => {
+export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): AdminPropertiesModel => {
 
-    const AdminPages: AdminPagesModel = 
-        sequelize.define('AdminPages', {
+    const AdminProperties: AdminPropertiesModel = 
+        sequelize.define('AdminProperties', {
             id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
                 allowNull: false,
                 primaryKey: true
+            },
+            propertie_code: {
+              type: DataTypes.STRING(50),
+              allowNull: false
             },
             title: {
               type: DataTypes.STRING(250),
@@ -45,14 +49,26 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
               type: DataTypes.STRING(250),
               allowNull: false
             },
+            images_gallery: {
+              type: DataTypes.TEXT(),
+              allowNull: false
+            },
+            info_propertie: {
+              type: DataTypes.STRING(250),
+              allowNull: false
+            },
+            status: {
+              type: DataTypes.ENUM('0','1'),
+              allowNull: false
+            },
         }, { 
-            tableName: 'pages'
+            tableName: 'properties'
         });
 
-        AdminPages.prototype.isPassword = (encodedPassword: string, password: string): boolean => {
+        AdminProperties.prototype.isPassword = (encodedPassword: string, password: string): boolean => {
             return compareSync(password, encodedPassword);
         }
         
-    return AdminPages;
+    return AdminProperties;
 
 };
