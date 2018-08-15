@@ -21,7 +21,7 @@ export interface AdminUserModel extends Sequelize.Model<AdminUserInstance, Admin
 export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): AdminUserModel => {
 
     const AdminUser: AdminUserModel = 
-        sequelize.define('users', {
+        sequelize.define('AdminUser', {
             id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
@@ -48,14 +48,14 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             tableName: 'users',
             hooks: {
                 beforeCreate: (user: AdminUserInstance, options: Sequelize.CreateOptions): void => {
-                    // const salt = genSaltSync();
-                    // user.password = hashSync(user.password, salt);
+                    const salt = genSaltSync();
+                    user.password = hashSync(user.password, salt);
                 },
                 beforeUpdate: (user: AdminUserInstance, options: Sequelize.CreateOptions): void => {
-                    // if (user.changed('password')) {
-                    //     const salt = genSaltSync();
-                    //     user.password = hashSync(user.password, salt);
-                    // }
+                    if (user.changed('password')) {
+                        const salt = genSaltSync();
+                        user.password = hashSync(user.password, salt);
+                    }
                 }
             }
         });
