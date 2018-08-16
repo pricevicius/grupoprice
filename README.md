@@ -1,3 +1,5 @@
+Projeto da empresa Grupo Price em Nodejs / Mysql / TypeScript / React
+
 # README #
  - create databse
  - change database name  on /src/config/config.json
