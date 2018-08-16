@@ -16,6 +16,7 @@ class Header extends React.Component {
                     <nav id="nav">
                         <ul>
                             <li class="current"><a href="/">Página Inicial</a></li>
+                            <li><a href="/quem-somos">Quem Somos</a></li>
                             <li>
                                 <a href="#">Áreas</a>
                                 <ul>

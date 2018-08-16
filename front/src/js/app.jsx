@@ -3,13 +3,13 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from './modules/home'
-import Sobre from './modules/sobre'
+import QuemSomos from './modules/quem-somos'
 
 let App = (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/sobre" component={Sobre} />
+            <Route path="/quem-somos" component={QuemSomos} />
         </Switch>
     </BrowserRouter>
 );

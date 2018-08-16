@@ -1,11 +1,11 @@
-Projeto da empresa Grupo Price em Nodejs / Mysql / TypeScript / React
+# Projeto da empresa Grupo Price em Nodejs / Mysql / TypeScript / React #
 
 ## FRONT ##
-Folder: front
-
+<strong>Folder:</strong> front
+ - run gulp: gulp
 
 ## API ##
-Folder: api
+<strong>Folder:</strong> api
 
  - create databse
  - change database name  on /src/config/config.json
@@ -14,10 +14,3 @@ Folder: api
  - run gulp: npm run gulp
  - run node: npm run start
 
-
-## USER ADMIN ##
- - user: 
- - pass: 
-
-
-## SMTP ##
