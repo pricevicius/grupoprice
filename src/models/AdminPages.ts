@@ -43,9 +43,6 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             },
             image: {
                 type: DataTypes.TEXT(),
-                get: function () {
-                    return JSON.parse(this.getDataValue('image'));
-                },
                 set: function (value) {
                     this.setDataValue('image', JSON.stringify(value));
                 },

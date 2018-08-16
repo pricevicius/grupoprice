@@ -37,7 +37,7 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
               type: DataTypes.STRING(250),
               allowNull: false
             },
-            subtitle: {
+            slug: {
               type: DataTypes.STRING(250),
               allowNull: false
             },
@@ -47,11 +47,11 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             },
             image: {
               type: DataTypes.STRING(250),
-              allowNull: false
+              allowNull: true
             },
             images_gallery: {
               type: DataTypes.TEXT(),
-              allowNull: false
+              allowNull: true
             },
             info_propertie: {
               type: DataTypes.STRING(250),
