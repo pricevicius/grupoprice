@@ -1,4 +1,5 @@
 import AdminUserController from "../controllers/AdminUserController";
+import AdminPagesController from "../controllers/AdminPagesController";
 
 const route = (securityRouter) => {
     
@@ -12,6 +13,13 @@ const route = (securityRouter) => {
         router.group("/users/", function(router) {
             router.put(':id', AdminUserController.update)
             router.delete(':id', AdminUserController.delete);
+        });
+
+        router.get("/pages/", AdminPagesController.findAll);
+        router.post("/pages/", AdminPagesController.insert);
+        router.group("/pages/", function(router) {
+            router.put(':id', AdminPagesController.update)
+            router.delete(':id', AdminPagesController.delete);
         });
     });    
 

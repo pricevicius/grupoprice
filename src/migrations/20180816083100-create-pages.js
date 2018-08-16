@@ -12,7 +12,7 @@ module.exports = {
         type: DataTypes.STRING(250),
         allowNull: false
       },
-      subtitle: {
+      slug: {
         type: DataTypes.STRING(250),
         allowNull: false
       },
@@ -22,7 +22,7 @@ module.exports = {
       },
       image: {
         type: DataTypes.JSON(),
-        allowNull: false
+        allowNull: true
       },
       createdAt: {
         allowNull: false,

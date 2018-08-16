@@ -6,7 +6,7 @@ import { BaseModelInterface } from '../interfaces/BaseModelInterface';
 export interface AdminPagesAttributes {
     id?: string;
     title?: string;
-    subtitle?: string;
+    slug?: string;
     content?: string;
     image?: string;
     createdAt?: string;
@@ -17,11 +17,11 @@ export interface AdminPagesInstance extends Sequelize.Instance<AdminPagesAttribu
     isPassword(encodedPassword: string, password: string): boolean;
 }
 
-export interface AdminPagesModel extends Sequelize.Model<AdminPagesInstance, AdminPagesAttributes>, BaseModelInterface {}
+export interface AdminPagesModel extends Sequelize.Model<AdminPagesInstance, AdminPagesAttributes>, BaseModelInterface { }
 
 export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): AdminPagesModel => {
 
-    const AdminPages: AdminPagesModel = 
+    const AdminPages: AdminPagesModel =
         sequelize.define('AdminPages', {
             id: {
                 type: DataTypes.UUID,
@@ -30,29 +30,31 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
                 primaryKey: true
             },
             title: {
-              type: DataTypes.STRING(250),
-              allowNull: false
+                type: DataTypes.STRING(250),
+                allowNull: false
             },
-            subtitle: {
-              type: DataTypes.STRING(250),
-              allowNull: false
+            slug: {
+                type: DataTypes.STRING(250),
+                allowNull: true
             },
             content: {
-              type: DataTypes.TEXT(),
-              allowNull: false
+                type: DataTypes.TEXT(),
+                allowNull: false
             },
             image: {
-              type: DataTypes.STRING(250),
-              allowNull: false
+                type: DataTypes.TEXT(),
+                get: function () {
+                    return JSON.parse(this.getDataValue('image'));
+                },
+                set: function (value) {
+                    this.setDataValue('image', JSON.stringify(value));
+                },
+                allowNull: true
             },
-        }, { 
-            tableName: 'pages'
-        });
+        }, {
+                tableName: 'pages'
+            });
 
-        AdminPages.prototype.isPassword = (encodedPassword: string, password: string): boolean => {
-            return compareSync(password, encodedPassword);
-        }
-        
     return AdminPages;
 
 };
