@@ -8,8 +8,8 @@
 
 
 ## USER ADMIN ##
-user: 
-pass: 
+ - user: 
+ - pass: 
 
 
 ## SMTP ##

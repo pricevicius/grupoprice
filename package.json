@@ -6,9 +6,7 @@
     "start": "nodemon --delay 4 build/index",
     "gulp": "gulp"
   },
-  "author": {
-    "name": "Leonardo Pricevicius / Eduardo Novak"
-  },
+  "author": "Leonardo Pricevicius / Eduardo Novak",
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "2.4.1",
@@ -40,5 +38,5 @@
     "type": "git",
     "url": "pricevicius"
   },
-  "description": ""
+  "description": "Projeto da empresa Grupo Price em Nodejs / Mysql / TypeScript / React"
 }
