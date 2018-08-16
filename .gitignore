@@ -1,20 +1,8 @@
-# Logs
-api/logs
-api/*.log
-api/npm-debug.log*
-api/yarn-debug.log*
-api/yarn-error.log*
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-api/build
-
 # Dependency directories
-api/node_modules/
-api/jspm_packages/
-api/build/
+api/node_modules/*
+api/jspm_packages/*
+api/build/*
 
-# Optional npm cache directory
-.npm
-
-# dotenv environment variables file
-.env
+front/node_modules/*
+front/jspm_packages/*
+front/build/*
